@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<%- include("head.ejs") %>
+<html>
+  <body>
+    <%- include("nav.ejs") %>
+    <nav>
+      <ul>
+        <li><a href="/all-blogs"> View Live Blogs </a></li>
+      </ul>
+      <ul>
+        <li><a href="/create-blog"> Create Blog </a></li>
+      </ul>
+    </nav>
+    <h1>Blog Page</h1>
+    <p>List of topic to read about on</p>
+    <% if (blogs.length > 0 ) { %> <% blogs.map( (blog) => { %>
+    <div style="color: green; margin: 10px">
+      <p style="font-weight: bolder"><%= blog.title %></p>
+      <%= blog.body %>
+      <hr>
+    </div>
+    <%}) %> <% } else {%>
+    <h5>No blog to display</h5>
+    <% } %> <%- include("footer.ejs") %>
+  </body>
+</html>
