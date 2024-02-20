@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&family=PT+Sans+Narrow&display=swap');
+
+* {
+    font-family: "Anta", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
     background-color: aliceblue;
+
 }
 
 nav {
@@ -57,9 +66,14 @@ input {
     width: 30%;
     height: 40px;
 }
+
 textarea {
     width: 30%;
     height: 150px;
+}
+
+.btn {
+    width: 5%;
 }
 
 button {
@@ -67,9 +81,11 @@ button {
     display: block;
     background-color: aquamarine;
     color: black;
+    border: none;
     border-radius: 5px;
     width: 10%;
     height: 30px;
+    box-shadow: solid black 3px;
 }
 
 footer {
