@@ -109,30 +109,20 @@ app.get("/add-blog", async (req, res) => {
 });
 
 app.get("/blog", (req, res) => {
-  const blogs = [
-    {
-      title: "Angels is coming soon",
-      body: "On the floor",
-    },
-    {
-      title: "Attention is needed",
-      body: "Going to Paris",
-    },
-    {
-      title: "No one to call on",
-      body: "Listening to events",
-    },
-  ];
-  res.render("blog.ejs", { title: "Blog", blogs });
+  res.redirect("all-blogs");
+  res.end();
 });
 
 app.get("/about-us", (req, res) => {
   res.redirect("/about");
 });
 
+// create a new blog
 app.get("/create-blog", (req, res) => {
   res.render("create-blog.ejs", { title: "Create Blog" });
 });
+
+//get all blog form database
 app.get("/all-blogs", async (req, res) => {
   try {
     const blogs = await Blog.find();
@@ -142,6 +132,8 @@ app.get("/all-blogs", async (req, res) => {
     res.end;
   }
 });
+
+//post a new blog
 app.post("/add-blog", async (req, res) => {
   try {
     const blog = new Blog({
@@ -158,6 +150,27 @@ app.post("/add-blog", async (req, res) => {
     console.error(err);
   }
 });
+
+//update blog
+app.put("/update-blog", async (req, res) => {
+  const blog = await Blog.findByIdAndUpdate(req._id, {
+    title: req.body.title,
+    snippet: req.body.snippet,
+    body: req.body.body,
+  });
+  if (blog.title == req.body.title) {
+    res.redirect("/all-blogs");
+  }
+});
+
+//delete blog
+app.delete("/delete-blog/:id", async (req, res) => {
+  const blog = await Blog.findByIdAndDelete(req.params.id);
+  res.json({ redirect: "/all-blogs" });
+  res.end();
+});
+
+//Route to 404 page
 app.use((req, res) => {
   res.render("404.ejs", { title: "Not Found " });
 });
