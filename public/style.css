@@ -90,6 +90,7 @@ button {
 
 footer {
     margin-top: 50px;
+    padding: 10px;
     display: flex;
     background-color: tan;
     height: 70px;
