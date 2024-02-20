@@ -76,7 +76,9 @@ mongoose
   .then(() => {
     console.log("Connected to database....");
     // server listening on port 4000
-    app.listen(4000, () => console.log("Server listening on 4000........"));
+    app.listen(process.env.PORT || 4000, () =>
+      console.log("Server listening on 4000........")
+    );
   })
   .catch((err) => console.log("Failed to connect to database", err.message));
 
