@@ -97,3 +97,22 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 768px) {
+    input {
+        width: 80%;
+        height: 40px;
+    }
+
+    textarea {
+        width: 90%;
+        height: 150px;
+    }
+
+    button {
+        width: 25%;
+    }
+    .btn {
+        width: 20%;
+    }
+}
