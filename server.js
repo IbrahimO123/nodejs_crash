@@ -133,6 +133,16 @@ app.get("/all-blogs", async (req, res) => {
   }
 });
 
+// get single blog
+app.get("/blog/:id", async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    res.render("single-blog", { title: "Single Blog", blog });
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 //post a new blog
 app.post("/add-blog", async (req, res) => {
   try {
